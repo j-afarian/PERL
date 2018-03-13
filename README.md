@@ -12,3 +12,9 @@ Arrays, lists, and hashes.
   
 **[Week Three](https://github.com/j-afarian/PERL/blob/master/Weekly%20Snippets/Week3Snippets.pl)**  
 File handling, subroutines, and special variables.  
+
+## Weekly Labs  
+**[Week Two](https://github.com/j-afarian/PERL/tree/master/Labs/Week%203)**  
+[Q1](https://github.com/j-afarian/PERL/blob/master/Labs/Week%203/q1.pl): Script to determine if there are any duplicate values in an array.  
+[Q2](https://github.com/j-afarian/PERL/blob/master/Labs/Week%203/q2.pl): Script to return the first non-repeating character in a string.  
+[Q3](https://github.com/j-afarian/PERL/blob/master/Labs/Week%203/q3.pl): Script which accepts three items and prints them along with the current date to a file.
