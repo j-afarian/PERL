@@ -104,3 +104,95 @@ print; # second print
 $_ = "DATA 1 2 3 4";
 s/\d+/$&*3/ge if /^DATA/;
 print;
+
+##################### TRANSLATION ######################
+# Basic syntax is tr/<search list>/<replacement list>/
+# Translation operator scans through the string bound by =~,
+# or $_, or character by character, and replaces a character in
+# the search with that in the replacement list.
+$_ = "Larry has a little camel, little camel, little camel.";
+tr/ca/CA/;
+print;
+# Now $_ contains "LArry hAs A little CAmel, little CAmel, little CAmel."
+# Translation operator returns number of occurences in search list. Can
+# be used for counting set of characters
+$_ = "Larry has a little camel, little camel, little camel.";
+my $count = tr/ca//; #number of 'c' and 'a'
+print "\n$count\n";
+
+# ----------- PATTERN STRINGS AND DELIMITERS -----------
+# Search and replacement patterns are string literals. 
+# They can interpolate variables.
+$_ = "Larry has a little camel, little camel, little camel.";
+my $pattern = "camel";
+my $replace = "lamb";
+print "Camel!\n" if /$pattern/;
+s/$pattern/$replace/g;
+print "$_\n";
+
+# To define pattern containing one variable immediate before 
+# something, use {}.
+$_ = "Larry has a little camel, little camel, little camel.";
+my $pattern = "came";
+print "Camel!\n" if /${pattern}l/; #search for camel
+
+# Patterns are one kind of quoted constructs, which all have
+# a generic "slash" form other than the well known versions such as ""
+# for a string and () for a list.
+
+#################################################################
+# CUSTOMARY | GENERIC | MEANING                 | Interpolates? #
+# ------------------------------------------------------------- #
+# ''        | q//     | literal string          | No            #
+# ""        | qq//    | literal string          | Yes           #
+# ()        | qw//    | word list               | No            #
+# //        | m//     | pattern match           | Yes           #
+# s///      | s///    | pattern substitution    | Yes           #
+# y///      | tr///   | character substitution  | No            #
+# ``        | qx//    | command execution       | Yes           #
+#################################################################
+
+
+####################### MODIFIERS #########################
+# Matching, substitution, and translation support modifiers
+# at the end. This modifies the behaviour of the regex.
+
+# ------------------- PATTERN MATCHING --------------------
+# /i to ignore cases
+# /g to match globally
+# /x to ignore whitespace and permit comment (to improve legibility)
+# /m to search a string as multiple lines if there are newlines embedded
+# /s opposite of /m and treats newline as a character
+
+$_ = "Larry has a little Camel, little cAMel, little camEL.";
+my @patterns = /camel/gi;
+# array @patterns has 3 elements: Camel, cAMel, and camEL.
+print "@patterns\n";
+
+# -------------------- SUBSTITUTION ------------------------
+# Pattern matching modifiers above are also applicable for substitution
+# /e to evaluate the replacement as a bock of perl code and use its
+# return value to substitute the patter
+my $lamb = 5;
+my $llama = 10;
+$_ = "Larry has a little Camel, little cAMel, little camEL.";
+s{ c a m e l # Are you sure?}{ $lamb > $llama ? lamb : llama }gxie;
+# If a lamb is worth more, then replace camels with lambs.
+# Otherwise, replace with lalamas.
+print "$_\n";
+
+# --------------------- TRANSLATION ----------------------
+# /d to delete found but un-replaced characters
+$_ = "Larry has a little camel, little camel, little camel.";
+tr/camel/x/d;
+# All the 'a', 'm', 'e', 'l' are removed. The 'c' are replaced with 'x'.
+# You can use tr/@$%*#//d to remove these special chars.
+
+# /s to squash duplicate replaced characters
+$_ = "Larry has a little camel, little camel, little camel.";
+tr/rt/x/s;
+# Now $_ is "Laxy has a lixle camel, lixel camel, lixel camel"
+
+
+####################### META-CHARACTERS ########################
+#
