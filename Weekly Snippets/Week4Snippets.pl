@@ -195,4 +195,86 @@ tr/rt/x/s;
 
 
 ####################### META-CHARACTERS ########################
+# \ | ( ) [ { ^ $ * + ? .
 #
+# \ - Escape character, disables other meta-characters.
+
+# | - Alternation characte: Search for 'lamb' or 'llama'
+#if /lamb|llama/;
+
+# () - Groups sub-patterns as one unit: Search for 'lamb' or 'lamp'
+#if /lam(b|p)/;
+
+# [] - Defines a character class to match one character from the set
+#if /lam[bp]/; # Search for 'lamb' or 'lamp'
+
+# ^ inside [] is negation: anything but lamb/lamp
+#if /lam[^bp]/; # lamc, lama, lamdd - just not lamb/lamp
+
+# ^ and $ define the beginning and end of the string
+#if /^Larry/; # string must start with 'Larry'
+#if /lamb$/; # string must end with 'lamb'
+
+# . (dot) matches with any character
+$_ = " "; print "True\n" if //;    #true
+$_ = " "; print "True\n" if /./;   #true
+$_ = " "; print "True\n" if /\./;  #false
+$_ = " "; print "True\n" if /./;   #false
+
+# --------------- META-CHARACTERS AS QUANTIFIERS --------------
+# Quantifiers specify the number of matches.
+#
+# * match 0 or more times
+# ? match 0 or 1 time
+# + match 1 or more times
+# {x} match exactly x times
+# {min, } match at least min times
+# {min, max} match at least min times but no more than max times
+
+# Special regex variables are
+# $` the substring before the match
+# $& the matched substring
+# $' the substring after the match
+
+$_ = "Larry has a little little little camel";
+print "--$`--$&--$'--\n" if / (little )+/;
+# --Larry has a-- little little little --camel--
+# Pattern was matched 3 times
+
+print "--$`--$&--$'--\n" if / (little ){2}/;
+# --Larry as a-- little little --little camel--
+
+# Quantifiers are greedy and will try to match the maximum
+# possible. If using {1,3} and there are 3+ if will match 3.
+
+# ----------------- LIMITING PATTERN MATCHES ----------------
+# To match patterns as few as possible, use the minimal quantifiers
+# *? 0 or more
+# ?? 0 or 1
+# +? 1 or more
+# {x}? exactly x
+# {min, }? at least min
+# {min, max}? at least min but no more than max
+
+$_ = "Larry has a little little little lamb";
+print "--$`--$&--$'--\n" if / (little ){1,3}?/;
+# matches only 1, NOT 3.
+
+$_ = "Larry has a big big big pupper";
+print "--$`--$&--$'--\n" if /.*?/;
+
+# ----------------------- META SYMBOLS ----------------------
+# \d any digit character, equiv to [0-9]
+# \D any non-digit character, equiv to [^0-9]
+# \s any whitespace character, equiv to [ \t\n\r\f]
+# \S any non-whitespace character, equiv to [^ \t\n\r\f]
+# \w any 'word' character, equiv to [a-zA-Z0-9_]
+# \W opposite to \w
+# \b matches word boundary, eg: /\blam\b/i matches with lam but not blame, not lamb.
+# \B opposite to \b, eg: /\Blam\B/i matches with llama but not lama, not slam.
+
+# ----------------------- SUB PATTERNS ---------------------
+# Parentheses can be used to group units inside of a pattern.
+# If the string matches with any of these sub-patterns, then matched
+# substrings are stored in a set of special variables.
+# $1 for first parenthesis, $2 for second pair, so on.
