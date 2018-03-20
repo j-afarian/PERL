@@ -277,4 +277,4 @@ print "--$`--$&--$'--\n" if /.*?/;
 # Parentheses can be used to group units inside of a pattern.
 # If the string matches with any of these sub-patterns, then matched
 # substrings are stored in a set of special variables.
-# $1 for first parenthesis, $2 for second pair, so on.
+# $1 for first parenthesis, $2 for second pair, so on
