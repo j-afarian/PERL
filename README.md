@@ -13,6 +13,9 @@ Arrays, lists, and hashes.
 **[Week Three](https://github.com/j-afarian/PERL/blob/master/Weekly%20Snippets/Week3Snippets.pl)**  
 File handling, subroutines, and special variables.  
 
+**[Week Four](https://github.com/j-afarian/PERL/blob/master/Weekly%20Snippets/Week4Snippets.pl)**  
+Regular expressions, formats, and references.
+
 ## Weekly Labs  
 **[Week Three](https://github.com/j-afarian/PERL/tree/master/Labs/Week%203)**  
 [Q1](https://github.com/j-afarian/PERL/blob/master/Labs/Week%203/q1.pl): Script to determine if there are any duplicate values in an array.  
