@@ -468,5 +468,106 @@ write;
 # --------------- CREATING REFERENCES ----------------
 # Create a reference with the backlash operator and a target.
 $var = 100;
-$hi = \$var;
-print $hi;
+$ref = \$var;
+%hash = (Name=>Bill, ID=>123);
+sub code{ print "Hello\n"; }
+
+@array = (1,2,3);
+$refArray = \@array;
+
+# Putting a backslah on a list returns a list of references
+
+@refs = \($var, @array, %hash, &code, *FILE);
+# is the same as:
+@ref = (\$var, \@array, \%hash, \&code, \*FILE);
+
+# ----------------- DEREFERENCING -------------------
+# Used to access the target variable that is referred by the reference.
+# Just add the corresponding type identifier in front of the reference.
+
+$$ref ++; print "\$var is $var\n"; # access scalar
+$" = " "; print "@$refArray\n";    # access array
+print "First $$refArray[0]\n";     # access element in array
+
+# A pair of braces {} can be placed around the reference, after the type identifier.
+# This implicitly dereferences the reference.
+
+@refArray = \($var, @array, %hash, &code, *FILE);
+
+print ${refArray[1]}[0];     # @$refArray[1] is wrong
+print %{$refArray[2]};       # %$refArray[2] is wrong
+&{$refArray[3]};             # &$refArray[3] is wrong
+
+# In the above example, $refArray[1] is a reference to an array.
+# To deref and access the first element you need to use ${$refArray[1]}[0];
+
+# Multiple levels of ref and deref:
+$ref = \\\"A string\n";
+$_ = $$$$ref;
+print;
+
+# A function ref can help determine the type of ref before derefing.
+# Returns false if the operand is not a reference or returns type of ref.
+
+foreach (@refArray) { 
+   print ref $_, "\n";
+}
+
+# -------------- ANONYMOUS TARGETS ------------------
+# Refs can be created without applying backslash on named variables or funcs.
+# Can directly refer to anonymous data which have no name so cannot be
+# accessed without a reference.
+
+# ANONYMOUS ARRAYS
+my $arrayRef = [1,2,3,4]; # refers to a four element array, use square brackets.
+
+# Elements in the anon array can be accesed by $$REFNAME[INDEX] or by arrow operator.
+print $$arrayRef[2], "\n";
+print $arrayRef->[2], "\n";
+
+# PERL arrays can hold heterogeneous data, so you can create an anon array
+# inside an anon array. Essentially a multi-dimensional array.
+
+my $arrayRef = [11, [21, 22], 31, [41, 42, 43]];
+print $$arrayRef[3][1], "\n";  #42
+print $arrayRef->[3][1], "\n"; #same
+
+# ANONYMOUS HASHES
+# Create with braces
+my $hashRef = {"Course"=>"Java", "Lecturer"=>"John"};
+print $$hashRef{Course}, "\n";  #Java
+print $hashRef->{Course}, "\n";
+
+# access the keys in a hash :
+my $result = {
+   "Bill" => [56, 78, 90],
+   "Mary" => [83, 65, PX, 72],
+};
+
+print "Well done!\n" if $result->{Bill}[2] > 80;
+
+$result = {
+   "Bill" => { Java => 56, C => 78, Perl => 90 },
+   "Mary" => { Java => 82, C => 65, Perl => PX },
+};
+
+print "Well done!\n" if $$result{Bill}{Perl} > 80;
+print "Uh oh...\n" if $$result{Mary}{C} < 70;
+
+# ANONYMOUS SUBROUTINES
+my $codeRef = sub {
+   print "Hello There!\n";
+};
+
+&$codeRef;      # calls the anon sub
+$codeRef->();   # same
+
+# Can interpolte the return from a function inside a string:
+sub func{
+   return "returned";
+};
+
+print "This is ${\func} \n";    # This is returned
+print "This is @{[func]} \n";   # same
+
+

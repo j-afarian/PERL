@@ -1,0 +1,27 @@
+# Question 1 - Lab 4
+# Jenna Afarian - S3511312
+
+1.1 - Edit a file with anything; name it as "input.txt".
+Complete
+
+1.2 - Run this script. What does it do?
+This script opens the file input.txt, iterates through each line 
+in the file and prints it.
+
+1.3 - Make sure a file called "input.txt" does not exist, run the script again.
+Complete, file not found error received.
+
+1.4 - $! contains an error message relating to the last error encounted, 
+in this case the fact that the file was not found.
+Understood
+
+1.5 - If you remove the newline character of the end of the die text, it 
+appends onto the die message the line number the die commeand lives on
+in the source (try it out yourself!)
+Complete
+
+1.6 - Make sure a file called "input.txt" does exist, but you cannot read it
+(eg chmod 000), what happens now? Check out the error message.
+Cannot open input.txt - permission denied.
+
+
