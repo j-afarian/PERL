@@ -402,3 +402,71 @@ write; # "I'm a little"
 print $a; # "teapot short and stout"
 
 # Shrinking is useful for printing a long string over multiple lines.
+#
+
+my $funcName = "Lorem Ipsum";
+my $description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor turpis nec felix efficitur ornare. Quisque laoreet sed ipsum a pulvinar.";
+
+format STDOUT = 
+@||||||||||||
+$funcName
+---------------------------------
+~ | ^<<<<<<<<<<<<<<<<<<<<<<
+$description
+~ | ^<<<<<<<<<<<<<<<<<<<<<<<
+$description
+~ | ^<<<<<<<<<<<<<<<<<<<<<<
+$description
+~ | ^<<<<<<<<<<<<<<<<<<<<<<
+$description
+.
+
+# the tilde means supress empty lines, so if variable is
+# already empty nothing will be printed.
+
+print "\n";
+write;
+
+# You can do the same as above with the double tilde.
+# It is effectively a loop, so don't use it with @
+# because @ does not change variable values so will
+# cause an infinite loop.
+
+$funcName = "Cookies";
+$description = "I love cookies a lot, they are my favourite
+treat. Cookies are delicious when you need something to eat.";
+
+format STDOUT = 
+@||||||||||||||||
+$funcName
+--------------------------------
+~~ | ^<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+$description
+.
+
+print "\n";
+write;
+
+# --------------- SPECIAL VARIABLES ----------------
+# $~ Current format name to be used by write.
+# $^ current format name for headsings.
+# $% Page number
+# $= Number of lines per page, default is 60. When number of
+# lines on current page reaches this, new header printed.
+
+
+##################### REFERENCES #####################
+# A scalar variable which can refer to some "referent",
+# such as a scalar variable, array, hash, function, or file handle.
+#
+# Similar to pointers in C, store the physical address of target.
+#
+# SYMBOLIC REFERENCES: Acts like an alias of other variables.
+# HARD REFERENCES: Store the memory address of others.
+# We will only gover the latter.
+
+# --------------- CREATING REFERENCES ----------------
+# Create a reference with the backlash operator and a target.
+$var = 100;
+$hi = \$var;
+print $hi;
