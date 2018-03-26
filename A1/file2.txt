@@ -1,0 +1,4 @@
+This is file two
+and it contains
+a little bit more
+stuff than file 1.
