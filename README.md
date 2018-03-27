@@ -20,4 +20,10 @@ Regular expressions, formats, and references.
 **[Week Three](https://github.com/j-afarian/PERL/tree/master/Labs/Week%203)**  
 [Q1](https://github.com/j-afarian/PERL/blob/master/Labs/Week%203/q1.pl): Script to determine if there are any duplicate values in an array.  
 [Q2](https://github.com/j-afarian/PERL/blob/master/Labs/Week%203/q2.pl): Script to return the first non-repeating character in a string.  
-[Q3](https://github.com/j-afarian/PERL/blob/master/Labs/Week%203/q3.pl): Script which accepts three items and prints them along with the current date to a file.
+[Q3](https://github.com/j-afarian/PERL/blob/master/Labs/Week%203/q3.pl): Script which accepts three items and prints them along with the current date to a file.  
+
+**[Week Four](https://github.com/j-afarian/PERL/tree/master/Labs/Week%204)**  
+[Q1](https://github.com/j-afarian/PERL/blob/master/Labs/Week%204/q1.txt): Answers to basic questions.   
+[Q2](https://github.com/j-afarian/PERL/blob/master/Labs/Week%204/q2.pl): Script which reads the contents of the /etc/passwd file and lists all users with the name "Smith" in their username or password.   
+[Q3](https://github.com/j-afarian/PERL/blob/master/Labs/Week%204/q3.pl): Refactored lab from week three (Q3) to use subroutines.
+
