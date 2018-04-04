@@ -16,6 +16,13 @@ File handling, subroutines, and special variables.
 **[Week Four](https://github.com/j-afarian/PERL/blob/master/Weekly%20Snippets/Week4Snippets.pl)**  
 Regular expressions, formats, and references.
 
+**[Week Five](https://github.com/j-afarian/PERL/blob/master/Weekly%20Snippets/Week5Snippets.pl)**  
+Data Structures. Also see [Extra Files](https://github.com/j-afarian/PERL/tree/master/Weekly%20Snippets/Week5Extras) for this week.
+
+**Week Six**  
+Object-Oriented Programming.
+
+
 ## Weekly Labs  
 **[Week Three](https://github.com/j-afarian/PERL/tree/master/Labs/Week%203)**  
 [Q1](https://github.com/j-afarian/PERL/blob/master/Labs/Week%203/q1.pl): Script to determine if there are any duplicate values in an array.  
