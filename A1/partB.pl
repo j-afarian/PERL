@@ -1,18 +1,17 @@
 #!/usr/bin/env perl
 
 ##################################################################
-#                  Part A: Text File Comparer                    #
+#        Part B: Platform Independent Text File Comparer         #
 ##################################################################
 #                    Author: Jenna Afarian                       #
 #----------------------------------------------------------------#
 #                    Student No: S3511312                        #
-#----------------------------------------------------------------#
-#   This program is best run in a full-screen terminal to avoid  #
-#    text wrapping issues which may present themselves in the    #
-#            `sdiff` output on small-width screens.              #
 ##################################################################
 
+use File::Compare;
+use List::Compare;
 use strict;
+use feature ':5.12';
 
 # Check that the user has passed a pair of files (two) to compare.
 unless ($#ARGV>=1 && $#ARGV<=1) {
@@ -28,7 +27,7 @@ unless (-e $file1 && -f _ && -e $file2 && -f _) {
 
 print "\nComparison of files $file1 and $file2\n";
 
-# Get line, word, and character counts using `wc`.
+# Get line, word, and character count using subroutine
 my @file1_wc = getWC($file1);
 my @file2_wc = getWC($file2);
 
@@ -54,17 +53,40 @@ format TABLE =
 
 write;
 
-# Use diff to determine which lines differ, print only those lines
-# Include line numbers on the left.
-my $diffResult = `sdiff -l $file1 $file2 | cat -n | grep -v -e \'($\'`;
-print "Specific lines which differ between $file1 and $file2: \n";
-print "\n",$diffResult, "\n";
-
+# Determine which lines do not match between the two files.
+getDiff($file1, $file2);
 
 # ---- Sub-routines ----
-
 sub getWC {
-   my $file = shift;
-   my $wordCount = `wc $file`;
-   my @wordCount = split(' ', $wordCount);
+  my $file = shift;
+  open(FILE, "<:encoding(UTF-8)", $file) or die "Could not open file: $!\n";
+
+  my ($lines, $words, $chars) = (0,0,0);
+  my @wordcounter;
+  while (<FILE>) {
+      $chars += length($_);
+      @wordcounter = split(/\W+/, $_);
+      $words += @wordcounter;
+  }
+  $lines = $.;
+  close FILE;
+  return my @wcArray = ($lines, $words, $chars);
+}
+
+sub getDiff {
+  my $file1 = shift;
+  my $file2 = shift;
+
+  open (my $fh1, "<", $file1) or die $!;
+  open (my $fh2, "<", $file2) or die $!;
+  my @content_f1=<$fh1>;
+  my @content_f2=<$fh2>;
+
+  my $diff = List::Compare->new(\@content_f1, \@content_f2);
+
+  print "Lines unique to $file1:\n", $diff->get_unique,"\n";
+  print "Lines unique to $file2:\n", $diff->get_complement,"\n";
+
+  close $fh1;
+  close $fh2;
 }
