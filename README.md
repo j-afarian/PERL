@@ -19,8 +19,8 @@ Regular expressions, formats, and references.
 **[Week Five](https://github.com/j-afarian/PERL/blob/master/Weekly%20Snippets/Week5Snippets.pl)**  
 Data Structures. Also see [Extra Files](https://github.com/j-afarian/PERL/tree/master/Weekly%20Snippets/Week5Extras) for this week.
 
-**Week Six**  
-Object-Oriented Programming.
+**[Week Six](https://github.com/j-afarian/PERL/blob/master/Weekly%20Snippets/Week6Snippets.pl)**  
+Object-Oriented Programming. Also see [Extra Files](https://github.com/j-afarian/PERL/tree/master/Weekly%20Snippets/Week6Extras) for this week.
 
 
 ## Weekly Labs  
