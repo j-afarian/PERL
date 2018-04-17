@@ -1,0 +1,6 @@
+<h2>Heading level 2</h2>
+A file with some html, but not on this line!
+Should we add a line break? <hr>
+Nope, <b>bold</b> here.
+net URL: www.email.net
+orgURL: www.thisisanorg.org
