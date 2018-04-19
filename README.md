@@ -35,3 +35,11 @@ Object-Oriented Programming. Also see [Extra Files](https://github.com/j-afarian
 [Q2](https://github.com/j-afarian/Scripting/blob/master/Perl/Labs/Week%204/q2.pl): Script which reads the contents of the /etc/passwd file and lists all users with the name "Smith" in their username or password.   
 [Q3](https://github.com/j-afarian/Scripting/blob/master/Perl/Labs/Week%204/q3.pl): Refactored lab from week three (Q3) to use subroutines.
 
+### Assignment One
+[Perl Comparison Scripts](https://github.com/j-afarian/Scripting/tree/master/Perl/A1)  
+
+## Python
+### Weekly Snippets
+**[Week Seven](https://github.com/j-afarian/Scripting/blob/master/Python/Weekly%20Snippets/Week7Snippets.py)**  
+Introduction to Python. Also see [Extra Files](https://github.com/j-afarian/Scripting/tree/master/Python/Weekly%20Snippets/Week7Extras) for this week.
+
