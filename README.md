@@ -41,5 +41,16 @@ Object-Oriented Programming. Also see [Extra Files](https://github.com/j-afarian
 ## Python
 ### Weekly Snippets
 **[Week Seven](https://github.com/j-afarian/Scripting/blob/master/Python/Weekly%20Snippets/Week7Snippets.py)**  
-Introduction to Python. Also see [Extra Files](https://github.com/j-afarian/Scripting/tree/master/Python/Weekly%20Snippets/Week7Extras) for this week.
+Introduction to Python. Also see [Extra Files](https://github.com/j-afarian/Scripting/tree/master/Python/Weekly%20Snippets/Week7Extras) for this week.  
+
+**[Week Eight](https://github.com/j-afarian/Scripting/blob/master/Python/Weekly%20Snippets/Week8Snippets.py)**  
+Data types, functions and Python data model, and exceptions.  
+
+### Weekly Labs 
+**[Week Seven](https://github.com/j-afarian/Scripting/tree/master/Python/Labs/Week%207)**  
+[Q1](https://github.com/j-afarian/Scripting/blob/master/Python/Labs/Week%207/q1.txt): Text questions  
+[Q2](https://github.com/j-afarian/Scripting/blob/master/Python/Labs/Week%207/q2.txt): Text Questions  
+
+**[Week Eight](https://github.com/j-afarian/Scripting/tree/master/Python/Labs/Week%208)**  
+[Q1](https://github.com/j-afarian/Scripting/blob/master/Python/Labs/Week%208/q1.py): Script which takes a number between 1-365 and returns the Month / Day of a non-leap year.  
 
