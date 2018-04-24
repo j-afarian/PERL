@@ -1,0 +1,11 @@
+Log into a Unix computer and use pydoc command to answer the following questions.
+
+- What does os.listdir do?
+Returns a list containing the names of the entries in the directory.
+The list is in arbitrary order.
+
+- What argments does it accept and what does it return?
+It accepts a path as an arguement and returns a list of strings.
+
+- Find the name of a string method which capitalises the first letter of every word in a string.
+

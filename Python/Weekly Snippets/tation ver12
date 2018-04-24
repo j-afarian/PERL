@@ -1,0 +1,4 @@
+Help on function add in module __main__:
+
+aadddd(a, b)
+    Given the numbers 'a' and 'b' return their sum.
