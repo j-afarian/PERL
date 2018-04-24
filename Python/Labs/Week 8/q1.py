@@ -41,10 +41,10 @@ def dayofyear(n):
 
     else:
         print "ERROR: Invalid day number."
-        
-    print date
+
+    return date
 
 
-
+# Use example:
 day = input("Please enter a day of the year between 1 and 365: ")
-dayofyear(day)
+print dayofyear(day)
