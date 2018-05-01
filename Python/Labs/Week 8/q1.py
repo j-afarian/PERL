@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# Jenna Afarian - s3511312
+
 def dayofyear(n):
     date = ""
 
