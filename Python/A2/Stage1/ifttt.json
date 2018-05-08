@@ -1,0 +1,31 @@
+{
+  "services": {
+    "time": {
+      "program": "./time.py"
+    },
+    "morning": {
+      "program": "./morning.py"
+    },
+    "afternoon": {
+      "program": "./afternoon.py"
+    },
+    "evening": {
+      "program": "./evening.py"
+    },
+    "append to file": {
+      "program": "./append.py"
+    },
+    "quit if false": {
+      "program": "./quitFalse.py"
+    },
+    "not": {
+      "program": "./not.py"
+    }
+  },
+  "flows": {
+    "Append time": [
+      "time",
+      "morning"
+    ]
+  }
+}
