@@ -23,9 +23,20 @@
     }
   },
   "flows": {
-    "Append time": [
+    "Is it morning?": [
       "time",
-      "morning"
+      "morning",
+      "not",
+      "quit if false",
+      "append to file"
+    ],
+    "Is it afternoon?": [
+      "time",
+      "afternoon",
+      "not",
+      "quit if false",
+      "append to file"
     ]
+
   }
 }
