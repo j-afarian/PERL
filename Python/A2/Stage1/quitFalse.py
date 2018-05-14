@@ -20,13 +20,10 @@ def quit_false():
 
     # Ensure that the flag from the previous service has been passed in correctly
     if flag:
-
         if flag == "True":
             sys.exit(1)
         elif flag == "False":
             return "The hour is: " + str(inputList[0])
-
-
 
     else:
         sys.exit(1)

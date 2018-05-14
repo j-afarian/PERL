@@ -43,7 +43,6 @@ while returnCode == 0:
             else:
                 command = [program, parameters]
 
-
             p = run(command, stdout=PIPE, input=newInput, encoding='utf-8')
 
             # Print details to terminal about return code flags,
@@ -55,7 +54,6 @@ while returnCode == 0:
                 print ("Output:", p.stdout.strip())
 
             newInput = p.stdout.strip()
-
 
             if returnCode == 1:
                 print ("A service has requested to end this program... Ending...")
